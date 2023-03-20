@@ -21,4 +21,16 @@ import('./build-components.js').then(build => build.generate())
 ### B8G via Just
 build run just
 
+## Contributing
+To add a 3th party dependencie always favor ESM and if possible import the entrypoints in a understandable way. 
+
+most best simple add a script that builds the 3th party component as modlet. eg: 
+- monaco-editor-core/monaco-editor-core.js
+- monaco-editor-languages-monarch/monaco-languages-monarch.js
+- monaco-editor-languages-textmate/monaco-languages-textmate.js
+- awesomeos-monaco-editor/awesomeos-monaco-editor - The AwesomeOS ScriptAble Monaco Editor. a drop in replacement for code-oss
+  - can be used as aliased build dependencie inside vscode forks to implement the AwesomeOS Component System.
+- code-oss-common/code-oss-common
+- code-oss-server/code-oss-server
+
 
