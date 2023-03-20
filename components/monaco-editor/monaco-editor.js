@@ -4,6 +4,7 @@ const installDependencies = `npm i -g --prefix $(pwd) monaco-editor-core@next`;
  * languages.registerTokenProvider => basic-languages and multiple languages.register* calls if languages/*
  *
  * editor.MonacoWebWorker can provide a proxy to abitary file gets used to send files 
+ *  'monaco-editor-core/esm/vs/editor/editor.worker'; .initalize((ctx, createData) => new <*>Worker(ctx, createData))
  * 
  * The Monarch Languages inside monaco-editor do rename monaco-editor-core's editor.main.js => edcore.main.js to inject additions
  * Then it builds with esbuild so 
