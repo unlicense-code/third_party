@@ -1,4 +1,6 @@
 const installDependencies = `npm i -g --prefix $(pwd) monaco-editor-core@next`;
+// if you extend code-oss or code-oss forks via this monaco-editor always create a element above the editor element
+// never mess with the editor element it self unless you know what your doing it mesures its size for example!
 // vs/editor/common/services/languageService.js is the main integration point between monaco-editor and code-oss 
 // it implements all other services everything is depending on that and feeding in that.
 
