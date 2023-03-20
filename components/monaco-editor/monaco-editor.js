@@ -1,4 +1,15 @@
 const installDependencies = `npm i -g --prefix $(pwd) monaco-editor-core@next`;
+// vs/editor/common/services/languageService.js is the main integration point between monaco-editor and code-oss 
+// it implements all other services everything is depending on that and feeding in that.
+
+// all stuff under platform gets decorated via a instantiator inside monaco-editor-core/esm/vs/platform/instantiation/common/instantiation.js
+// it does module linking and caching so the goal is to load eg: IService and get something else.
+// This got done to have a internal system to request services as there where no module support
+// conclusion plutform is total none needed in ESM replacement in base and editor are neeeded it implements the vscode api platform 
+// 
+
+// /vs/base/common/worker/simpleWorker.js
+// vs/platform/instantiation/common/instantiation.js
 /**
  * Notes:
  * languages.registerTokenProvider => basic-languages and multiple languages.register* calls if languages/*
@@ -32,7 +43,17 @@ const installDependencies = `npm i -g --prefix $(pwd) monaco-editor-core@next`;
 	IEvent
 }
  */
+/*
+vs/editor/editor.worker wich uses base simpleWorker replaced by
+// Replaces vscode-simple worker load directly language/ * /nameWorker.js
+const ws = await import(moduleId); 
+const messageHandler = ws.create((msg: any, transfer?: Transferable[]) => {
+    (<any>globalThis).postMessage(msg, transfer);
+}, null);
 
+globalThis.onmessage = (e: MessageEvent) => messageHandler.onmessage(e.data, e.ports);
+
+*/
 export const buildConfigs = {
 'core': ``
 
